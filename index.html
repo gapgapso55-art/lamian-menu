@@ -7,85 +7,114 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #fdf6e3;
+            background-color: #fdf6e3; /* 暖黄色背景 */
             color: #333;
             margin: 0;
             padding: 40px 20px;
+            display: flex;
+            justify-content: center;
         }
         .menu-container {
             max-width: 600px;
+            width: 100%;
             margin: 0 auto;
             background: #fff;
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             text-align: center;
-            color: #d35400;
+            position: relative;
+        }
+        /* 顶部Logo与标题 */
+        .header {
             margin-bottom: 30px;
         }
-        .item {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px dashed #ccc;
+        .logo {
+            font-size: 40px;
+            margin-bottom: 10px;
         }
-        .item:last-child {
+        h1 {
+            color: #d35400; /* 拉面橙红色 */
+            margin: 0;
+            font-size: 32px;
+        }
+        /* 吉祥物区域 */
+        .mascot {
+            font-size: 60px;
+            margin: 10px 0 20px 0;
+            display: block;
+        }
+        /* 菜单项 */
+        .menu-item {
+            margin-bottom: 25px;
+            border-bottom: 2px dashed #eee;
+            padding-bottom: 15px;
+        }
+        .menu-item:last-child {
             border-bottom: none;
         }
-        .name {
+        .item-title {
+            font-size: 22px;
             font-weight: bold;
-            font-size: 18px;
-        }
-        .desc {
-            font-size: 14px;
-            color: #777;
-            margin-top: 5px;
+            color: #2c3e50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .price {
             color: #d35400;
-            font-weight: bold;
-            font-size: 18px;
+            font-size: 24px;
+        }
+        .desc {
+            font-size: 15px;
+            color: #7f8c8d;
+            margin-top: 8px;
+            text-align: left;
         }
     </style>
 </head>
 <body>
     <div class="menu-container">
-        <h1>🍜 拉面菜单</h1>
-        
-        <div class="item">
-            <div>
-                <div class="name">经典豚骨拉面</div>
-                <div class="desc">浓郁骨汤，软嫩叉烧，溏心蛋</div>
-            </div>
-            <div class="price">¥48</div>
+        <!-- 顶部Logo -->
+        <div class="header">
+            <div class="logo">🍜</div>
+            <h1>拉面菜单</h1>
+            <!-- 吉祥物 (这里用emoji替代，如果后续有真图可直接换) -->
+            <div class="mascot">🐼🔥</div>
         </div>
 
-        <div class="item">
-            <div>
-                <div class="name">麻辣味噌拉面</div>
-                <div class="desc">秘制味噌，麻辣鲜香，劲道面条</div>
+        <!-- 菜单列表 -->
+        <div class="menu-item">
+            <div class="item-title">
+                <span>经典豚骨拉面</span>
+                <span class="price">¥48</span>
             </div>
-            <div class="price">¥52</div>
+            <div class="desc">浓郁骨汤，软嫩叉烧，溏心蛋</div>
         </div>
 
-        <div class="item">
-            <div>
-                <div class="name">酱油清爽拉面</div>
-                <div class="desc">传统酱油汤底，海苔，竹笋</div>
+        <div class="menu-item">
+            <div class="item-title">
+                <span>麻辣味噌拉面</span>
+                <span class="price">¥52</span>
             </div>
-            <div class="price">¥42</div>
+            <div class="desc">秘制味噌，麻辣鲜香，劲道面条</div>
         </div>
 
-        <div class="item">
-            <div>
-                <div class="name">招牌蘸面</div>
-                <div class="desc">浓汤蘸食，大块叉烧，冷面热汤</div>
+        <div class="menu-item">
+            <div class="item-title">
+                <span>酱油清爽拉面</span>
+                <span class="price">¥42</span>
             </div>
-            <div class="price">¥55</div>
+            <div class="desc">传统酱油汤底，海苔，竹笋</div>
+        </div>
+
+        <div class="menu-item">
+            <div class="item-title">
+                <span>招牌蘸面</span>
+                <span class="price">¥55</span>
+            </div>
+            <div class="desc">浓汤蘸食，大块叉烧，冷面热汤</div>
         </div>
     </div>
 </body>
 </html>
-
