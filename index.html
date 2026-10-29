@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拉面菜单</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf6e3;
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        .menu-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #d35400;
+            margin-bottom: 30px;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px dashed #ccc;
+        }
+        .item:last-child {
+            border-bottom: none;
+        }
+        .name {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .desc {
+            font-size: 14px;
+            color: #777;
+            margin-top: 5px;
+        }
+        .price {
+            color: #d35400;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <h1>🍜 拉面菜单</h1>
+        
+        <div class="item">
+            <div>
+                <div class="name">经典豚骨拉面</div>
+                <div class="desc">浓郁骨汤，软嫩叉烧，溏心蛋</div>
+            </div>
+            <div class="price">¥48</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="name">麻辣味噌拉面</div>
+                <div class="desc">秘制味噌，麻辣鲜香，劲道面条</div>
+            </div>
+            <div class="price">¥52</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="name">酱油清爽拉面</div>
+                <div class="desc">传统酱油汤底，海苔，竹笋</div>
+            </div>
+            <div class="price">¥42</div>
+        </div>
+
+        <div class="item">
+            <div>
+                <div class="name">招牌蘸面</div>
+                <div class="desc">浓汤蘸食，大块叉烧，冷面热汤</div>
+            </div>
+            <div class="price">¥55</div>
+        </div>
+    </div>
+</body>
+</html>
 
