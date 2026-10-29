@@ -5,184 +5,413 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>主面人 · 青海拉面</title>
 <style>
-  body { margin: 0; font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #f8f8f8; color: #333; padding-bottom: 80px; }
-  .header { background: #fff; text-align: center; padding: 20px 15px 15px; position: relative; }
-  .mascot-wrap { margin-bottom: 8px; }
-  .mascot-img { width: 70px; height: 70px; border-radius: 50%; background: #f0f4ff; }
-  .logo-img { height: 60px; }
-  .sub-title { font-size: 15px; letter-spacing: 4px; color: #1e3a8a; font-weight: bold; margin-top: 5px; }
-  .halal-tag { font-size: 13px; color: #1e3a8a; margin-top: 5px; }
-  
-  .nav { display: flex; gap: 8px; padding: 12px; background: #fff; overflow-x: auto; position: sticky; top: 0; z-index: 10; border-bottom: 1px solid #eee; }
-  .nav-item { padding: 6px 14px; border-radius: 20px; font-size: 14px; color: #666; white-space: nowrap; cursor: pointer; border: 1px solid #ddd; background: #fff; }
+  body { margin: 0; font-family: -apple-system, "PingFang SC", sans-serif; background: #f5f5f5; color: #333; }
+  .header { background: #fff; padding: 20px 15px; text-align: center; border-bottom: 1px solid #eee; }
+  .mascot { font-size: 42px; line-height: 1; }
+  .logo-text { font-size: 26px; font-weight: 900; color: #1e3a8a; letter-spacing: 2px; margin-top: 5px; }
+  .sub-title { font-size: 14px; color: #666; margin-top: 4px; }
+  .total-banner { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: #fff; padding: 15px; text-align: center; }
+  .total-number { font-size: 36px; font-weight: 900; letter-spacing: 2px; }
+  .total-label { font-size: 13px; opacity: .8; margin-top: 4px; }
+  .total-stores { display: flex; justify-content: center; gap: 15px; margin-top: 8px; font-size: 12px; flex-wrap: wrap; }
+  .top-bar { display: flex; justify-content: center; gap: 10px; padding: 10px; background: #fff; border-bottom: 1px solid #eee; }
+  .top-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid #1e3a8a; background: #fff; color: #1e3a8a; font-size: 14px; cursor: pointer; }
+  .top-btn.active { background: #1e3a8a; color: #fff; }
+  .nav-bar { display: flex; overflow-x: auto; padding: 12px 10px; background: #fff; border-bottom: 1px solid #eee; }
+  .nav-item { flex: 0 0 auto; padding: 8px 18px; margin: 0 5px; border: 1px solid #ccc; border-radius: 20px; font-size: 14px; background: #fff; cursor: pointer; transition: .2s; }
   .nav-item.active { background: #1e3a8a; color: #fff; border-color: #1e3a8a; }
-  
-  .vip-row { display: flex; gap: 8px; padding: 12px; background: #fff; overflow-x: auto; }
-  .vip-card { flex: 1; min-width: 90px; padding: 10px 5px; border: 1px solid #1e3a8a; border-radius: 8px; text-align: center; cursor: pointer; background: #fff; color: #1e3a8a; }
+  .vip-row { display: flex; overflow-x: auto; padding: 10px; background: #fff; margin-top: 8px; }
+  .vip-card { flex: 0 0 auto; min-width: 80px; padding: 10px; margin-right: 8px; border: 2px solid #1e3a8a; border-radius: 10px; text-align: center; font-size: 13px; color: #1e3a8a; background: #fff; cursor: pointer; transition: .2s; }
   .vip-card.active { background: #1e3a8a; color: #fff; }
-  .vip-name { font-weight: bold; font-size: 15px; }
-  .vip-desc { font-size: 11px; margin-top: 3px; opacity: 0.8; }
-  
-  .combo-box { background: #fff; margin: 12px; border-radius: 12px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
-  .combo-title { font-size: 17px; font-weight: bold; margin-bottom: 8px; color: #1e3a8a; }
-  .combo-item { border-top: 1px solid #f5f5f5; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
-  
-  .menu { padding: 10px; display: grid; gap: 12px; }
-  .card { background: #fff; border-radius: 12px; display: flex; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid #f0f0f0; }
-  .card-img { width: 105px; height: 105px; object-fit: cover; background: #f8f8f8; }
-  .card-body { flex: 1; padding: 12px 10px; display: flex; flex-direction: column; justify-content: space-between; }
-  .card-title { font-size: 16px; font-weight: bold; display: flex; align-items: center; gap: 5px; color: #222; }
-  .tag { font-size: 11px; background: #eef2fa; color: #1e3a8a; padding: 2px 6px; border-radius: 4px; font-weight: normal; }
-  .price-wrap { font-size: 13px; color: #999; }
-  .price { color: #1e3a8a; font-weight: bold; font-size: 18px; margin-left: 5px; }
-  .add-btn { float: right; background: #1e3a8a; color: #fff; width: 32px; height: 32px; border-radius: 50%; border: none; font-size: 18px; line-height: 32px; text-align: center; cursor: pointer; }
-  
-  .checkout { position: fixed; bottom: 15px; left: 15px; right: 15px; background: #1e3a8a; color: #fff; text-align: center; padding: 14px; border-radius: 30px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 12px rgba(30,58,138,0.4); z-index: 20; }
+  .vip-card b { display: block; font-size: 15px; }
+  .vip-card small { display: block; margin-top: 3px; font-size: 11px; opacity: .8; }
+  .pkg-box { background: #fff; margin: 10px; padding: 15px; border-radius: 12px; }
+  .pkg-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+  .pkg-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; }
+  .pkg-item:last-child { border: 0; }
+  .pkg-price { color: #1e3a8a; font-weight: bold; font-size: 18px; }
+  #menuList { padding: 10px; }
+  .card { background: #fff; border-radius: 12px; margin-bottom: 12px; display: flex; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,.05); }
+  .card-img { width: 110px; height: 110px; object-fit: cover; background: #eee; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+  .card-body { flex: 1; padding: 12px; display: flex; flex-direction: column; justify-content: space-between; }
+  .card-title { font-size: 17px; font-weight: bold; }
+  .tag { font-size: 12px; color: #1e3a8a; border: 1px solid #1e3a8a; border-radius: 4px; padding: 1px 5px; margin-left: 5px; font-weight: normal; }
+  .price-wrap { font-size: 13px; color: #999; text-decoration: line-through; }
+  .price { color: #e53935; font-size: 20px; font-weight: bold; text-decoration: none; margin-left: 5px; }
+  .add-btn { align-self: flex-end; width: 36px; height: 36px; border-radius: 50%; background: #1e3a8a; color: #fff; border: 0; font-size: 22px; line-height: 34px; cursor: pointer; }
+  .checkout { position: fixed; bottom: 15px; left: 15px; right: 15px; background: #1e3a8a; color: #fff; text-align: center; padding: 15px; border-radius: 30px; font-size: 18px; font-weight: bold; z-index: 99; box-shadow: 0 4px 12px rgba(30,58,138,.4); cursor: pointer; }
+  .admin-panel { display: none; padding: 15px; }
+  .admin-panel.show { display: block; }
+  .admin-section { background: #fff; border-radius: 12px; padding: 15px; margin-bottom: 15px; }
+  .admin-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #1e3a8a; }
+  .pk-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .pk-box { flex: 1; min-width: 80px; border: 1px solid #eee; border-radius: 10px; padding: 12px; text-align: center; }
+  .pk-box.winner { border-color: #e53935; background: #fff5f5; }
+  .pk-name { font-size: 15px; font-weight: bold; }
+  .pk-score { font-size: 24px; font-weight: bold; color: #1e3a8a; margin-top: 5px; }
+  .pk-bar { height: 8px; background: #eee; border-radius: 4px; margin-top: 8px; overflow: hidden; }
+  .pk-bar-fill { height: 100%; background: #1e3a8a; border-radius: 4px; }
+  .stat-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f5f5f5; }
+  .stat-row:last-child { border: 0; }
+  .stat-label { font-size: 14px; color: #666; }
+  .stat-value { font-size: 14px; font-weight: bold; color: #1e3a8a; }
+  .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.5); z-index: 999; justify-content: center; align-items: flex-end; }
+  .modal-overlay.show { display: flex; }
+  .modal-box { background: #fff; width: 100%; max-width: 400px; border-radius: 16px 16px 0 0; padding: 20px 15px 30px; }
+  .modal-title { font-size: 18px; font-weight: bold; text-align: center; margin-bottom: 15px; }
+  .pay-option { display: flex; align-items: center; padding: 14px 12px; border: 1px solid #eee; border-radius: 10px; margin-bottom: 8px; cursor: pointer; }
+  .pay-option:hover { background: #f5f5f5; }
+  .pay-icon { font-size: 24px; margin-right: 12px; }
+  .pay-name { font-size: 16px; }
+  .pay-amount { margin-left: auto; font-weight: bold; color: #1e3a8a; }
+  .modal-close { text-align: center; padding-top: 10px; color: #999; cursor: pointer; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="mascot-wrap">
-    <img src="https://image.pollinations.ai/prompt/A%20cute%20white%20yak%20mascot%20wearing%20blue%20hat%2C%20logo%20style%2C%20clean%20background?width=100&height=100&nologo=true" class="mascot-img" alt="吉祥物🐼🔥">
-  </div>
-  <div>
-    <img src="https://image.pollinations.ai/prompt/%E4%B8%BB%E9%9D%A2%E4%BA%BA%20logo%2C%20chinese%20noodle%20brand%2C%20black%20calligraphy%20text%20with%20noodle%20graphic?width=200&height=80&nologo=true" class="logo-img" alt="主面人">
-  </div>
-  <div class="sub-title">千 年 传 承 一 碗 面</div>
-  <div class="halal-tag">✦ 青海拉面 · 清真 ✦</div>
+  <div class="mascot">🐂</div>
+  <div class="logo-text">主面人 · 青海拉面</div>
+  <div class="sub-title">清真 · 千年传承一碗面</div>
 </div>
 
-<div class="nav">
-  <div class="nav-item active">招牌主食</div>
-  <div class="nav-item">盖浇饭</div>
-  <div class="nav-item">特色小吃</div>
-  <div class="nav-item">风味烤串</div>
-  <div class="nav-item">餐前小菜</div>
-  <div class="nav-item">饮料</div>
-</div>
-
-<div class="vip-row">
-  <div class="vip-card active"><div class="vip-name">靚仔卡</div><div class="vip-desc">95折</div></div>
-  <div class="vip-card"><div class="vip-name">兄弟卡</div><div class="vip-desc">92折</div></div>
-  <div class="vip-card"><div class="vip-name">姊妹卡</div><div class="vip-desc">92折</div></div>
-  <div class="vip-card"><div class="vip-name">全家福</div><div class="vip-desc">88折</div></div>
-</div>
-
-<div class="combo-box">
-  <div class="combo-title">🔥 推荐套餐</div>
-  <div class="combo-item" onclick="alert('套餐A：牛肉面+小菜+饮料')">
-    <span>套餐A（招牌牛肉面+凉菜+冰峰）</span>
-    <strong style="color:#1e3a8a;">¥38</strong>
-  </div>
-  <div class="combo-item" onclick="alert('套餐B：烤串+主食')">
-    <span>套餐B（烤串拼盘+盖饭）</span>
-    <strong style="color:#1e3a8a;">¥52</strong>
+<div class="total-banner">
+  <div class="total-label">全企业累计销量</div>
+  <div class="total-number" id="totalBowl">128,456 碗</div>
+  <div class="total-stores" id="storeList">
+    <span>🏪 尖沙咀店：32,450碗</span>
+    <span>🏪 中环店：28,230碗</span>
+    <span>🏪 铜锣湾店：25,106碗</span>
+    <span>🏪 佐敦店：22,890碗</span>
+    <span>🏪 湾仔店：19,780碗</span>
   </div>
 </div>
 
-<div class="menu" id="menuList"></div>
+<div class="top-bar">
+  <div class="top-btn active" id="frontBtn" onclick="switchView('front')">前台点餐</div>
+  <div class="top-btn" id="adminBtn" onclick="switchView('admin')">后台管理</div>
+</div>
 
-<div class="checkout" onclick="alert('结算分单：\n面档：2件\n烤串：3件\n总计：¥86')">去结算 (¥86)</div>
+<div id="frontView">
+  <div class="nav-bar" id="navBar">
+    <div class="nav-item active" data-cat="all">招牌主食</div>
+    <div class="nav-item" data-cat="盖浇饭">盖浇饭</div>
+    <div class="nav-item" data-cat="特色小吃">特色小吃</div>
+    <div class="nav-item" data-cat="风味烤串">风味烤串</div>
+    <div class="nav-item" data-cat="小菜">小菜</div>
+    <div class="nav-item" data-cat="饮品">饮品</div>
+  </div>
+
+  <div class="vip-row" id="vipRow">
+    <div class="vip-card active" data-discount="0.95"><b>靓仔卡</b><small>95折</small></div>
+    <div class="vip-card" data-discount="0.92"><b>兄弟卡</b><small>92折</small></div>
+    <div class="vip-card" data-discount="0.92"><b>姊妹卡</b><small>92折</small></div>
+    <div class="vip-card" data-discount="0.88"><b>全家福卡</b><small>88折</small></div>
+    <div class="vip-card" data-type="times"><b>次卡</b><small>剩余10次</small></div>
+    <div class="vip-card" data-type="month"><b>月卡</b><small>月底到期</small></div>
+  </div>
+
+  <div class="pkg-box">
+    <div class="pkg-title">🔥 推荐套餐</div>
+    <div class="pkg-item"><span>套餐A（招牌牛肉面+凉菜+冰峰）</span><span class="pkg-price">¥38</span></div>
+    <div class="pkg-item"><span>套餐B（烤串拼盘+盖饭）</span><span class="pkg-price">¥52</span></div>
+  </div>
+
+  <div id="menuList"></div>
+  <div class="checkout" id="checkoutBtn" onclick="openPayModal()">去结算 (¥86)</div>
+</div>
+
+<div class="admin-panel" id="adminView">
+  <div class="admin-section">
+    <div class="admin-title">💰 财务中心</div>
+    <div class="stat-row"><span class="stat-label">今日营业额</span><span class="stat-value">¥45,680</span></div>
+    <div class="stat-row"><span class="stat-label">本月营业额</span><span class="stat-value">¥1,286,400</span></div>
+    <div class="stat-row"><span class="stat-label">今日支出（采购）</span><span class="stat-value">¥12,350</span></div>
+    <div class="stat-row"><span class="stat-label">本月支出（采购）</span><span class="stat-value">¥368,200</span></div>
+    <div class="stat-row"><span class="stat-label">本月净利润</span><span class="stat-value">¥486,500</span></div>
+    <div class="stat-row"><span class="stat-label">银行账户余额</span><span class="stat-value">¥2,386,000</span></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">👥 人事薪酬</div>
+    <div class="stat-row"><span class="stat-label">👨‍🍳 阿强（尖沙咀店长）</span><span class="stat-value">底薪¥15,000 + 提成¥3,200</span></div>
+    <div class="stat-row"><span class="stat-label">👨‍🍳 阿明（中环店长）</span><span class="stat-value">底薪¥15,000 + 提成¥2,800</span></div>
+    <div class="stat-row"><span class="stat-label">👨‍🍳 阿杰（铜锣湾店长）</span><span class="stat-value">底薪¥15,000 + 提成¥2,500</span></div>
+    <div class="stat-row"><span class="stat-label">👨‍🍳 阿豪（佐敦店长）</span><span class="stat-value">底薪¥15,000 + 提成¥2,100</span></div>
+    <div class="stat-row"><span class="stat-label">👨‍🍳 阿文（湾仔店长）</span><span class="stat-value">底薪¥15,000 + 提成¥1,800</span></div>
+    <div class="stat-row"><span class="stat-label">👨‍🍳 店员（共15人）</span><span class="stat-value">底薪¥10,000 + 提成¥800~1,500</span></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">📦 采购管理</div>
+    <div class="stat-row"><span class="stat-label">今日采购单</span><span class="stat-value">3笔 · ¥12,350</span></div>
+    <div class="stat-row"><span class="stat-label">本月采购单</span><span class="stat-value">42笔 · ¥368,200</span></div>
+    <div class="stat-row"><span class="stat-label">主要供应商</span><span class="stat-value">青海牛羊肉 · 中环面粉 · 新界蔬菜</span></div>
+    <div class="stat-row"><span class="stat-label">库存预警</span><span class="stat-value">牛肉剩2天 · 面粉剩3天</span></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">🏢 组织架构</div>
+    <div class="stat-row"><span class="stat-label">韩总（老板）</span><span class="stat-value">管全部5家店</span></div>
+    <div class="stat-row"><span class="stat-label">区域经理1（尖沙咀区）</span><span class="stat-value">管尖沙咀店</span></div>
+    <div class="stat-row"><span class="stat-label">区域经理2（港岛区）</span><span class="stat-value">管中环店、铜锣湾店、湾仔店</span></div>
+    <div class="stat-row"><span class="stat-label">区域经理3（九龙区）</span><span class="stat-value">管佐敦店</span></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">🔐 权限管理（七级）</div>
+    <div class="stat-row"><span class="stat-label">第1级 店员</span><span class="stat-value">前台点餐、结算</span></div>
+    <div class="stat-row"><span class="stat-label">第2级 店长</span><span class="stat-value">本店数据 + 本店采购</span></div>
+    <div class="stat-row"><span class="stat-label">第3级 区域经理</span><span class="stat-value">所辖区域数据 + 区域PK</span></div>
+    <div class="stat-row"><span class="stat-label">第4级 大区总监</span><span class="stat-value">全企业数据</span></div>
+    <div class="stat-row"><span class="stat-label">第5级 合伙人</span><span class="stat-value">全部数据 + 财务 + 配方</span></div>
+    <div class="stat-row"><span class="stat-label">第6级 超级管理员</span><span class="stat-value">系统设置 + 权限分配</span></div>
+    <div class="stat-row"><span class="stat-label">第7级 系统审计</span><span class="stat-value">所有操作留痕 · 拍照+录5秒 · 存90天</span></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">🏆 今日晨会PK</div>
+    <div class="pk-row">
+      <div class="pk-box winner">
+        <div class="pk-name">👨‍🍳 阿强</div>
+        <div class="pk-score">128单</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="pk-box">
+        <div class="pk-name">👨‍🍳 阿明</div>
+        <div class="pk-score">96单</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:55%"></div></div>
+      </div>
+      <div class="pk-box">
+        <div class="pk-name">👨‍🍳 阿杰</div>
+        <div class="pk-score">82单</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:45%"></div></div>
+      </div>
+    </div>
+    <div class="pk-row">
+      <div class="pk-box winner">
+        <div class="pk-name">🏪 尖沙咀店</div>
+        <div class="pk-score">¥12,860</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="pk-box">
+        <div class="pk-name">🏪 中环店</div>
+        <div class="pk-score">¥10,240</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:65%"></div></div>
+      </div>
+      <div class="pk-box">
+        <div class="pk-name">🏪 铜锣湾店</div>
+        <div class="pk-score">¥8,960</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:50%"></div></div>
+      </div>
+      <div class="pk-box">
+        <div class="pk-name">🏪 佐敦店</div>
+        <div class="pk-score">¥7,320</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:40%"></div></div>
+      </div>
+      <div class="pk-box">
+        <div class="pk-name">🏪 湾仔店</div>
+        <div class="pk-score">¥6,180</div>
+        <div class="pk-bar"><div class="pk-bar-fill" style="width:35%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">💳 卖卡统计</div>
+    <div class="stat-row"><span class="stat-label">靓仔卡</span><span class="stat-value">今日12张 · 累计86张 · ¥8,600</span></div>
+    <div class="stat-row"><span class="stat-label">兄弟卡</span><span class="stat-value">今日8张 · 累计54张 · ¥5,400</span></div>
+    <div class="stat-row"><span class="stat-label">姊妹卡</span><span class="stat-value">今日6张 · 累计42张 · ¥4,200</span></div>
+    <div class="stat-row"><span class="stat-label">全家福卡</span><span class="stat-value">今日4张 · 累计28张 · ¥2,800</span></div>
+    <div class="stat-row"><span class="stat-label">次卡</span><span class="stat-value">今日15张 · 累计120张 · ¥12,000</span></div>
+    <div class="stat-row"><span class="stat-label">月卡</span><span class="stat-value">今日10张 · 累计65张 · ¥6,500</span></div>
+  </div>
+
+  <div class="admin-section">
+    <div class="admin-title">📊 菜品销量排行</div>
+    <div class="stat-row"><span class="stat-label">1. 招牌牛肉面</span><span class="stat-value">今日86份</span></div>
+    <div class="stat-row"><span class="stat-label">2. 烤羊肉串</span><span class="stat-value">今日64份</span></div>
+    <div class="stat-row"><span class="stat-label">3. 酿皮</span><span class="stat-value">今日52份</span></div>
+    <div class="stat-row"><span class="stat-label">4. 酸梅汤</span><span class="stat-value">今日48杯</span></div>
+    <div class="stat-row"><span class="stat-label">5. 凉拌牛肉</span><span class="stat-value">今日35份</span></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="payModal">
+  <div class="modal-box">
+    <div class="modal-title">选择支付方式</div>
+    <div class="pay-option" onclick="pay('微信支付')"><span class="pay-icon">💚</span><span class="pay-name">微信支付</span><span class="pay-amount" id="wxAmount">¥86</span></div>
+    <div class="pay-option" onclick="pay('支付宝')"><span class="pay-icon">💙</span><span class="pay-name">支付宝</span><span class="pay-amount" id="aliAmount">¥86</span></div>
+    <div class="pay-option" onclick="pay('EPS')"><span class="pay-icon">🏦</span><span class="pay-name">EPS</span><span class="pay-amount" id="epsAmount">¥86</span></div>
+    <div class="pay-option" onclick="pay('FPS')"><span class="pay-icon">📱</span><span class="pay-name">FPS 转数快</span><span class="pay-amount" id="fpsAmount">¥86</span></div>
+    <div class="pay-option" onclick="pay('信用卡')"><span class="pay-icon">💳</span><span class="pay-name">信用卡</span><span class="pay-amount" id="cardAmount">¥86</span></div>
+    <div class="pay-option" onclick="pay('现金')"><span class="pay-icon">💵</span><span class="pay-name">现金</span><span class="pay-amount" id="cashAmount">¥86</span></div>
+    <div class="modal-close" onclick="closeModal()">关闭</div>
+  </div>
+</div>
 
 <script>
-// 37个完整菜品（无售罄，全部正常显示，价格按原价*1.3取整）
 const menuData = [
-  // 招牌主食 (12)
-  { name: "招牌牛肉面", cat: "面档", price: 30 },
-  { name: "青海鲜蔬牛肉凉面", cat: "面档", price: 28 },
-  { name: "红烧牛肉面", cat: "面档", price: 30 },
-  { name: "酸汤牛肉面", cat: "面档", price: 28 },
-  { name: "干拌牛肉面", cat: "面档", price: 28 },
-  { name: "羊肉泡馍", cat: "面档", price: 36 },
-  { name: "清汤牛肉面", cat: "面档", price: 26 },
-  { name: "辣子牛肉面", cat: "面档", price: 28 },
-  { name: "西红柿鸡蛋面", cat: "面档", price: 22 },
-  { name: "炸酱面", cat: "面档", price: 24 },
-  { name: "羊杂汤面", cat: "面档", price: 32 },
-  { name: "大宽牛肉面", cat: "面档", price: 32 },
-
-  // 盖浇饭 (4)
-  { name: "特色盖浇饭", cat: "盖饭", price: 26 },
-  { name: "孜然牛肉盖饭", cat: "盖饭", price: 28 },
-  { name: "红烧牛肉盖饭", cat: "盖饭", price: 28 },
-  { name: "羊肉盖饭", cat: "盖饭", price: 32 },
-
-  // 特色小吃 (6)
-  { name: "凉拌牛肉", cat: "小吃", price: 32 },
-  { name: "酿皮", cat: "小吃", price: 18 },
-  { name: "甜醅", cat: "小吃", price: 16 },
-  { name: "牛奶鸡蛋醪糟", cat: "小吃", price: 20 },
-  { name: "手抓羊肉", cat: "小吃", price: 68 },
-  { name: "东乡土豆片", cat: "小吃", price: 18 },
-
-  // 风味烤串 (6)
-  { name: "烤羊肉串", cat: "烤串", price: 8 },
-  { name: "烤牛肉串", cat: "烤串", price: 8 },
-  { name: "烤腰子", cat: "烤串", price: 15 },
-  { name: "烤板筋", cat: "烤串", price: 10 },
-  { name: "烤心管", cat: "烤串", price: 12 },
-  { name: "烤馕", cat: "烤串", price: 10 },
-
-  // 餐前小菜 (4)
+  { name: "招牌牛肉面", cat: "招牌主食", price: 30 },
+  { name: "青海鲜蔬牛肉凉面", cat: "招牌主食", price: 28 },
+  { name: "红烧牛肉面", cat: "招牌主食", price: 28 },
+  { name: "酸汤牛肉面", cat: "招牌主食", price: 28 },
+  { name: "干拌牛肉面", cat: "招牌主食", price: 28 },
+  { name: "羊肉泡馍", cat: "招牌主食", price: 32 },
+  { name: "大宽牛肉面", cat: "招牌主食", price: 30 },
+  { name: "细面牛肉面", cat: "招牌主食", price: 28 },
+  { name: "清汤牛肉面", cat: "招牌主食", price: 26 },
+  { name: "特色盖浇饭", cat: "盖浇饭", price: 25 },
+  { name: "孜然牛肉盖饭", cat: "盖浇饭", price: 28 },
+  { name: "羊肉盖饭", cat: "盖浇饭", price: 30 },
+  { name: "盖饭套餐(面+肉)", cat: "盖浇饭", price: 35 },
+  { name: "烤羊肉串", cat: "风味烤串", price: 8 },
+  { name: "烤牛肉串", cat: "风味烤串", price: 8 },
+  { name: "烤腰子", cat: "风味烤串", price: 15 },
+  { name: "烤板筋", cat: "风味烤串", price: 10 },
+  { name: "烤心管", cat: "风味烤串", price: 12 },
+  { name: "烤馕", cat: "风味烤串", price: 10 },
+  { name: "烤串拼盘", cat: "风味烤串", price: 45 },
+  { name: "凉拌牛肉", cat: "特色小吃", price: 28 },
+  { name: "酿皮", cat: "特色小吃", price: 18 },
+  { name: "甜醅", cat: "特色小吃", price: 15 },
+  { name: "醪糟", cat: "特色小吃", price: 12 },
+  { name: "炸土豆", cat: "特色小吃", price: 15 },
+  { name: "羊杂汤", cat: "特色小吃", price: 22 },
+  { name: "手抓羊肉", cat: "特色小吃", price: 48 },
   { name: "鸡蛋", cat: "小菜", price: 3 },
   { name: "小菜拼盘", cat: "小菜", price: 12 },
   { name: "凉拌木耳", cat: "小菜", price: 14 },
   { name: "拍黄瓜", cat: "小菜", price: 12 },
-
-  // 饮料 (5)
   { name: "冰峰", cat: "饮品", price: 6 },
   { name: "酸梅汤", cat: "饮品", price: 8 },
   { name: "杏皮水", cat: "饮品", price: 8 },
   { name: "三泡台", cat: "饮品", price: 15 },
-  { name: "现磨豆浆", cat: "饮品", price: 8 }
+  { name: "现磨豆浆", cat: "饮品", price: 8 },
+  { name: "牛肉大宽", cat: "招牌主食", price: 32 }
 ];
 
-// 智能图片映射（防重复，美化）
-function getImg(name) {
-  const map = {
-    "面": "beef-noodle-soup", "凉面": "cold-noodles", "泡馍": "lamb-soup",
-    "盖饭": "rice-bowl", "烤": "grilled-skewers", "羊肉": "lamb-kebab",
-    "牛肉": "beef-noodle", "凉拌": "cold-beef-salad", "酿皮": "asian-noodles",
-    "甜醅": "sweet-dessert", "小菜": "side-dish", "鸡蛋": "boiled-egg",
-    "冰峰": "soda-drink", "酸梅汤": "plum-drink", "杏皮水": "apricot-drink",
-    "三泡台": "tea-cup", "饮料": "beverage", "大宽": "wide-noodle",
-    "羊杂": "lamb-offal", "手抓": "hand-grabbed-lamb", "土豆": "fried-potato",
-    "醪糟": "sweet-soup", "板筋": "grilled-tendon", "心管": "grilled-heart",
-    "烤馕": "naan-bread", "木耳": "wood-ear", "黄瓜": "cucumber", "豆浆": "soy-milk"
-  };
-  let key = "chinese-halal-food";
-  for (let k in map) if (name.includes(k)) key = map[k];
-  return `https://image.pollinations.ai/prompt/${encodeURIComponent(key)}%2C%20appetizing%20chinese%20halal%20cuisine%2C%20high%20quality?width=200&height=200&nologo=true`;
+let currentDiscount = 0.95;
+let currentCat = "all";
+let currentTotal = 86;
+let totalBowl = 128456;
+let storeData = {
+  "尖沙咀店": 32450,
+  "中环店": 28230,
+  "铜锣湾店": 25106,
+  "佐敦店": 22890,
+  "湾仔店": 19780
+};
+
+const list = document.getElementById("menuList");
+function render() {
+  list.innerHTML = "";
+  menuData.forEach(m => {
+    if (currentCat !== "all" && m.cat !== currentCat) return;
+    const discounted = Math.round(m.price * currentDiscount);
+    const div = document.createElement("div");
+    div.className = "card";
+    div.innerHTML = `
+      <div class="card-img">🍜</div>
+      <div class="card-body">
+        <div>
+          <div class="card-title">${m.name} <span class="tag">${m.cat}</span></div>
+          <div class="price-wrap">原价¥${m.price} <span class="price">¥${discounted}</span></div>
+        </div>
+        <button class="add-btn" onclick="event.stopPropagation();addToCart('${m.name}', ${m.price})">+</button>
+      </div>`;
+    list.appendChild(div);
+  });
 }
 
-// 渲染菜单
-const list = document.getElementById("menuList");
-menuData.forEach(m => {
-  const div = document.createElement("div");
-  div.className = "card";
-  div.innerHTML = `
-    <img src="${getImg(m.name)}" class="card-img" onerror="this.src='https://image.pollinations.ai/prompt/chinese%20noodle%20food?width=200&height=200&nologo=true'">
-    <div class="card-body">
-      <div>
-        <div class="card-title">${m.name} <span class="tag">${m.cat}</span></div>
-        <div class="price-wrap">原价¥${Math.round(m.price/1.3)} <span class="price">¥${m.price}</span></div>
-      </div>
-      <button class="add-btn" onclick="alert('已加：${m.name}')">+</button>
-    </div>
-  `;
-  list.appendChild(div);
+function addToCart(name, price) {
+  totalBowl++;
+  document.getElementById("totalBowl").textContent = totalBowl.toLocaleString() + " 碗";
+  const stores = Object.keys(storeData);
+  const randomStore = stores[Math.floor(Math.random() * stores.length)];
+  storeData[randomStore]++;
+  document.querySelectorAll('.total-stores span').forEach(el => {
+    const storeName = el.textContent.split('：')[0].replace('🏪 ', '');
+    if (storeName === randomStore) {
+      el.textContent = `🏪 ${storeName}：${storeData[randomStore].toLocaleString()}碗`;
+    }
+  });
+  checkMilestone();
+  alert(`已加：${name} ¥${price}`);
+}
+
+function checkMilestone() {
+  const milestones = [100000, 1000000, 10000000];
+  milestones.forEach(m => {
+    if (totalBowl === m) {
+      alert(`🎉 恭喜！全企业累计销量突破 ${m.toLocaleString()} 碗！`);
+    }
+  });
+}
+
+document.querySelectorAll(".nav-item").forEach(n => {
+  n.onclick = function() {
+    document.querySelectorAll(".nav-item").forEach(x => x.classList.remove("active"));
+    this.classList.add("active");
+    currentCat = this.dataset.cat;
+    render();
+  };
 });
 
-// 交互
-document.querySelectorAll(".vip-card").forEach(c => c.onclick = function() {
-  document.querySelectorAll(".vip-card").forEach(x => x.classList.remove("active"));
-  this.classList.add("active");
+document.querySelectorAll(".vip-card").forEach(c => {
+  c.onclick = function() {
+    document.querySelectorAll(".vip-card").forEach(x => x.classList.remove("active"));
+    this.classList.add("active");
+    if (this.dataset.type === "times") {
+      alert("次卡：剩余10次，每次扣1次");
+      currentDiscount = 1;
+    } else if (this.dataset.type === "month") {
+      alert("月卡：本月无限次，月底到期");
+      currentDiscount = 0.9;
+    } else {
+      currentDiscount = parseFloat(this.dataset.discount);
+    }
+    render();
+    updateTotal();
+  };
 });
-document.querySelectorAll(".nav-item").forEach(n => n.onclick = function() {
-  document.querySelectorAll(".nav-item").forEach(x => x.classList.remove("active"));
-  this.classList.add("active");
-});
+
+function updateTotal() {
+  const total = Math.round(menuData.filter(m => currentCat === "all" || m.cat === currentCat)
+    .reduce((s, m) => s + m.price * currentDiscount, 0));
+  currentTotal = total;
+  document.getElementById("checkoutBtn").textContent = `去结算 (¥${total})`;
+}
+
+function switchView(view) {
+  if (view === 'front') {
+    document.getElementById('frontView').style.display = 'block';
+    document.getElementById('adminView').classList.remove('show');
+    document.getElementById('frontBtn').classList.add('active');
+    document.getElementById('adminBtn').classList.remove('active');
+  } else {
+    document.getElementById('frontView').style.display = 'none';
+    document.getElementById('adminView').classList.add('show');
+    document.getElementById('frontBtn').classList.remove('active');
+    document.getElementById('adminBtn').classList.add('active');
+  }
+}
+
+function openPayModal() {
+  document.getElementById('payModal').classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('payModal').classList.remove('show');
+}
+
+function pay(method) {
+  alert(`✅ 支付成功（${method}）\n金额：¥${currentTotal}\n订单已记录，全企业销量+1`);
+  closeModal();
+}
+
+render();
+updateTotal();
 </script>
 </body>
 </html>
