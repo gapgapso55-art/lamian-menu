@@ -2,284 +2,212 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>主面人 · 清真青海拉面</title>
 <style>
-:root{--blue:#1A3A8F;--blue-light:#2E5BCE;--gold:#D4AF37;--bg:#F8F9FA;}
-*{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Helvetica Neue",Arial,sans-serif;}
-body{background:var(--bg);color:#333;padding-bottom:80px;}
-.header{text-align:center;padding:20px 15px 10px;background:#fff;}
-.logo{font-size:42px;font-weight:900;color:var(--blue);letter-spacing:4px;}
-.slogan{font-size:16px;color:#555;margin-top:5px;}
-.banner{background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;text-align:center;padding:20px 15px;margin:10px;border-radius:12px;}
-.banner h3{font-size:16px;opacity:.9;margin-bottom:5px;}
-.banner .total{font-size:48px;font-weight:900;margin:5px 0;}
-.banner .total span{font-size:24px;}
-.shops{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;margin-top:15px;font-size:14px;}
-.shops div{display:flex;justify-content:space-between;}
-.btn-group{display:flex;gap:10px;padding:15px;justify-content:center;}
-.btn{padding:12px 30px;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer;border:2px solid var(--blue);}
-.btn-primary{background:var(--blue);color:#fff;}
-.btn-outline{background:#fff;color:var(--blue);}
-.cats{display:flex;overflow-x:auto;padding:10px 15px;gap:10px;background:#fff;margin:10px 0;}
-.cat{padding:8px 20px;border-radius:20px;border:1px solid #ccc;white-space:nowrap;background:#fff;}
-.cat.active{background:var(--blue);color:#fff;border-color:var(--blue);}
-.cards{display:flex;overflow-x:auto;padding:10px 15px;gap:10px;}
-.card{padding:15px 25px;border-radius:12px;border:2px solid var(--blue);text-align:center;min-width:110px;background:#fff;}
-.card.active{background:var(--blue);color:#fff;}
-.card h4{font-size:18px;margin-bottom:5px;}
-.card p{font-size:14px;opacity:.9;}
-.section-title{font-size:20px;font-weight:bold;padding:15px;color:var(--blue);display:flex;align-items:center;gap:8px;}
-.menu{padding:0 15px;display:grid;grid-template-columns:1fr;gap:12px;}
-.item{background:#fff;padding:15px;border-radius:12px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,0.05);}
-.item-info h4{font-size:17px;margin-bottom:4px;}
-.item-info p{font-size:12px;color:#888;}
-.item-price{color:#D43838;font-size:20px;font-weight:bold;}
-.add-btn{background:var(--blue);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;margin-left:10px;cursor:pointer;}
-.settle{position:fixed;bottom:20px;left:15px;right:15px;background:var(--blue);color:#fff;text-align:center;padding:16px;border-radius:40px;font-size:20px;font-weight:bold;box-shadow:0 4px 15px rgba(26,58,143,0.4);cursor:pointer;z-index:100;}
-.admin-mask{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:200;align-items:center;justify-content:center;}
-.login{background:#fff;padding:30px;border-radius:15px;width:85%;max-width:350px;text-align:center;}
-.login h3{color:var(--blue);margin-bottom:20px;font-size:22px;}
-.login input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:8px;font-size:16px;}
-.login button{width:100%;padding:14px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:18px;margin-top:10px;cursor:pointer;}
-.admin-panel{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--bg);z-index:300;overflow-y:auto;}
-.admin-header{background:var(--blue);color:#fff;padding:15px;text-align:center;position:relative;}
-.admin-header h2{font-size:20px;}
-.admin-header .close{position:absolute;right:15px;top:15px;font-size:24px;cursor:pointer;}
-.admin-nav{display:flex;overflow-x:auto;background:#fff;padding:10px;gap:8px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-.admin-nav button{padding:8px 15px;border:1px solid #ccc;background:#fff;border-radius:20px;white-space:nowrap;cursor:pointer;}
-.admin-nav button.active{background:var(--blue);color:#fff;border-color:var(--blue);}
-.tab{display:none;padding:15px;}
-.tab.active{display:block;}
-.pk-card{background:#fff;padding:15px;border-radius:12px;margin-bottom:15px;box-shadow:0 2px 5px rgba(0,0,0,0.05);}
-.pk-row{display:flex;justify-content:space-between;align-items:center;margin:10px 0;}
-.pk-bar{height:12px;background:#eee;border-radius:6px;margin-top:5px;overflow:hidden;}
-.pk-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--gold);border-radius:6px;}
-.data-box{background:#fff;padding:15px;border-radius:12px;margin-bottom:10px;font-size:16px;line-height:1.8;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f5;color:#333;padding-bottom:80px;}
+  .header{text-align:center;padding:20px 10px;background:#fff;}
+  .header h1{font-size:32px;font-weight:900;}
+  .header p{color:#666;font-size:14px;margin-top:5px;}
+  .banner{background:linear-gradient(135deg,#003399,#1a66cc);color:#fff;padding:25px 15px;text-align:center;margin:10px;border-radius:12px;}
+  .banner .t{font-size:16px;opacity:.9;}
+  .banner .num{font-size:48px;font-weight:bold;margin:10px 0;}
+  .stores{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:15px;font-size:14px;}
+  .stores div{background:rgba(255,255,255,.15);padding:6px 10px;border-radius:6px;}
+  .nav{display:flex;justify-content:center;gap:15px;padding:20px;background:#fff;margin:10px;border-radius:12px;}
+  .btn{padding:12px 30px;border-radius:30px;font-size:16px;cursor:pointer;}
+  .btn-primary{background:#003399;color:#fff;border:none;}
+  .btn-outline{background:#fff;color:#003399;border:2px solid #003399;}
+  .cats{display:flex;overflow-x:auto;gap:10px;padding:15px;background:#fff;margin:10px;border-radius:12px;}
+  .cat{padding:10px 20px;border-radius:25px;border:1px solid #ccc;background:#fff;white-space:nowrap;cursor:pointer;}
+  .cat.active{background:#003399;color:#fff;border-color:#003399;}
+  .cards{display:flex;overflow-x:auto;gap:12px;padding:15px;background:#fff;margin:10px;border-radius:12px;}
+  .card{min-width:120px;padding:15px;border-radius:12px;border:2px solid #003399;text-align:center;}
+  .card.active{background:#003399;color:#fff;}
+  .card h4{font-size:18px;margin-bottom:5px;}
+  .menu{padding:15px;background:#fff;margin:10px;border-radius:12px;}
+  .item{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #eee;}
+  .item:last-child{border:none;}
+  .item-info h4{font-size:17px;margin-bottom:4px;}
+  .item-info p{color:#999;font-size:13px;}
+  .item-price{color:#d93025;font-weight:bold;font-size:18px;margin-right:15px;}
+  .add-btn{width:32px;height:32px;background:#003399;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;}
+  .recommend{background:#fff;margin:10px;padding:15px;border-radius:12px;}
+  .recommend h3{margin-bottom:15px;}
+  .pkg{display:flex;justify-content:space-between;align-items:center;background:#f8f8f8;padding:15px;border-radius:10px;}
+  .footer{position:fixed;bottom:0;left:0;width:100%;background:#003399;color:#fff;padding:18px;text-align:center;font-size:20px;cursor:pointer;z-index:100;}
+  .admin-mask{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:200;align-items:center;justify-content:center;}
+  .login-box{background:#fff;padding:30px;border-radius:12px;width:85%;max-width:350px;text-align:center;}
+  .login-box input{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:6px;}
+  .admin-panel{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:#f5f5f5;z-index:300;overflow-y:auto;padding-bottom:70px;}
+  .admin-header{background:#003399;color:#fff;padding:20px;text-align:center;}
+  .admin-nav{display:flex;gap:8px;padding:10px;background:#fff;overflow-x:auto;}
+  .admin-nav button{padding:8px 12px;border:none;background:#eee;border-radius:6px;white-space:nowrap;cursor:pointer;}
+  .admin-nav button.active{background:#003399;color:#fff;}
+  .tab{display:none;padding:15px;}
+  .tab.active{display:block;}
+  .pk-item{background:#fff;padding:15px;margin-bottom:10px;border-radius:10px;display:flex;justify-content:space-between;}
 </style>
 </head>
 <body>
-
 <div class="header">
-  <div class="logo">主面人</div>
-  <div class="slogan">清真 · 青海拉面 · 千年传承一碗面</div>
+  <h1>主面人</h1>
+  <p>清真 · 青海拉面</p>
 </div>
 
 <div class="banner">
-  <h3>全企业累计销量</h3>
-  <div class="total">128,456 <span>碗</span></div>
-  <div class="shops">
-    <div><span>🏪 尖沙咀店</span><span>32,450碗</span></div>
-    <div><span>🏪 中环店</span><span>28,230碗</span></div>
-    <div><span>🏪 铜锣湾店</span><span>25,106碗</span></div>
-    <div><span>🏪 佐敦店</span><span>22,890碗</span></div>
-    <div style="grid-column:1/-1;text-align:center;margin-top:5px;"><span>🏪 湾仔店</span><span>19,780碗</span></div>
+  <div class="t">全企业累计销量</div>
+  <div class="num">128,456 <span style="font-size:24px;">碗</span></div>
+  <div class="stores">
+    <div>🏪 尖沙咀店：32,450碗</div>
+    <div>🏪 中环店：28,230碗</div>
+    <div>🏪 铜锣湾店：25,106碗</div>
+    <div>🏪 佐敦店：22,890碗</div>
+    <div>🏪 湾仔店：19,780碗</div>
   </div>
 </div>
 
-<div class="btn-group">
-  <div class="btn btn-primary" onclick="alert('已进入前台点餐')">前台点餐</div>
-  <div class="btn btn-outline" onclick="showAdmin()">后台管理</div>
+<div class="nav">
+  <button class="btn btn-primary">前台点餐</button>
+  <button class="btn btn-outline" onclick="showAdmin()">后台管理</button>
 </div>
 
-<div class="cats">
-  <div class="cat active">招牌主食</div>
-  <div class="cat">盖浇饭</div>
-  <div class="cat">特色小吃</div>
-  <div class="cat">风味烤串</div>
-  <div class="cat">饮品</div>
-  <div class="cat">推荐套餐</div>
+<div class="cats" id="cats">
+  <div class="cat active" data-cat="主食">招牌主食</div>
+  <div class="cat" data-cat="盖饭">盖浇饭</div>
+  <div class="cat" data-cat="小吃">特色小吃</div>
+  <div class="cat" data-cat="烤串">风味烤串</div>
+  <div class="cat" data-cat="饮品">饮品</div>
 </div>
 
 <div class="cards">
   <div class="card active"><h4>靓仔卡</h4><p>95折</p></div>
   <div class="card"><h4>兄弟卡</h4><p>92折</p></div>
   <div class="card"><h4>姊妹卡</h4><p>92折</p></div>
-  <div class="card"><h4>全家福</h4><p>88折</p></div>
+  <div class="card"><h4>全家卡</h4><p>88折</p></div>
 </div>
 
-<div class="section-title">🔥 推荐套餐</div>
-<div class="menu">
-  <div class="item">
-    <div class="item-info"><h4>套餐A（招牌牛肉面+凉菜+冰峰）</h4><p>经典搭配</p></div>
-    <div style="display:flex;align-items:center;"><span class="item-price">¥38</span><div class="add-btn" onclick="addCart(38)">+</div></div>
-  </div>
-  <div class="item">
-    <div class="item-info"><h4>套餐B（手抓双拼+拉面）</h4><p>大快朵颐</p></div>
-    <div style="display:flex;align-items:center;"><span class="item-price">¥68</span><div class="add-btn" onclick="addCart(68)">+</div></div>
+<div class="recommend">
+  <h3>🔥 推荐套餐</h3>
+  <div class="pkg">
+    <div><strong>套餐A</strong><br><small>招牌牛肉面+凉菜+冰峰</small></div>
+    <div style="color:#d93025;font-weight:bold;font-size:22px;">¥38</div>
   </div>
 </div>
 
-<div class="section-title">🍜 招牌主食（10款）</div>
-<div class="menu" id="mainFood">
-  <!-- JS渲染40个菜 -->
-</div>
+<div class="menu" id="menuBox"></div>
 
-<div class="settle" onclick="checkout()">去结算 (¥<span id="total">0</span>)</div>
+<div class="footer" onclick="checkout()">去结算 (¥<span id="total">0</span>)</div>
 
-<!-- 后台登录 -->
 <div class="admin-mask" id="loginMask">
-  <div class="login">
-    <h3>主面人 · 后台管理</h3>
-    <input type="text" id="adminUser" placeholder="账号" value="admin">
-    <input type="password" id="adminPwd" placeholder="密码" value="888888">
-    <button onclick="doLogin()">登 录</button>
+  <div class="login-box">
+    <h3>后台登录</h3>
+    <input type="text" id="adminUser" placeholder="账号">
+    <input type="password" id="adminPwd" placeholder="密码">
+    <button class="btn btn-primary" style="width:100%;margin-top:10px;" onclick="doLogin()">登录</button>
   </div>
 </div>
 
-<!-- 后台面板 -->
 <div class="admin-panel" id="adminPanel">
   <div class="admin-header">
-    <h2>后台管理中心</h2>
-    <span class="close" onclick="logout()">✕</span>
+    <h2>主面人 · 后台管理</h2>
+    <button onclick="logout()" style="margin-top:10px;padding:6px 15px;border:none;border-radius:6px;cursor:pointer;">退出</button>
   </div>
   <div class="admin-nav">
     <button class="active" onclick="showTab('pk',this)">门店PK</button>
-    <button onclick="showTab('cards',this)">卖卡统计</button>
-    <button onclick="showTab('rank',this)">菜品排行</button>
-    <button onclick="showTab('tables',this)">桌台状态</button>
-    <button onclick="showTab('purchase',this)">采购库存</button>
-    <button onclick="showTab('hr',this)">人事排班</button>
+    <button onclick="showTab('sale',this)">销售</button>
+    <button onclick="showTab('card',this)">会员卡</button>
+    <button onclick="showTab('table',this)">桌台</button>
   </div>
-  
-  <div id="pk" class="tab active">
-    <div class="pk-card">
-      <h3 style="color:var(--blue);">🏆 门店销量PK</h3>
-      <div class="pk-row"><span>尖沙咀店 🥇</span><span>32,450碗 (108%)</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:100%;"></div></div>
-      <div class="pk-row"><span>中环店 🥈</span><span>28,230碗 (94%)</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:87%;"></div></div>
-      <div class="pk-row"><span>铜锣湾店 🥉</span><span>25,106碗 (84%)</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:77%;"></div></div>
-      <div class="pk-row"><span>佐敦店</span><span>22,890碗 (76%)</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:70%;"></div></div>
-      <div class="pk-row"><span>湾仔店</span><span>19,780碗 (66%)</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:60%;"></div></div>
-    </div>
-    <div class="pk-card">
-      <h3 style="color:var(--blue);">⚔️ 单品擂主PK</h3>
-      <div class="pk-row"><span>招牌牛肉面</span><span>12,450碗</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:100%;"></div></div>
-      <div class="pk-row"><span>牛肉凉面</span><span>8,230碗</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:66%;"></div></div>
-      <div class="pk-row"><span>羊肉串拉面</span><span>6,890碗</span></div>
-      <div class="pk-bar"><div class="pk-fill" style="width:55%;"></div></div>
-    </div>
+  <div class="tab active" id="pk">
+    <h3>🏆 门店销量榜</h3>
+    <div class="pk-item"><span>尖沙咀店</span><b>32,450碗</b></div>
+    <div class="pk-item"><span>中环店</span><b>28,230碗</b></div>
+    <div class="pk-item"><span>铜锣湾店</span><b>25,106碗</b></div>
+    <div class="pk-item"><span>佐敦店</span><b>22,890碗</b></div>
+    <div class="pk-item"><span>湾仔店</span><b>19,780碗</b></div>
   </div>
-  
-  <div id="cards" class="tab">
-    <div class="data-box">
-      <h3 style="color:var(--blue);margin-bottom:10px;">💳 今日卖卡</h3>
-      兄弟卡：32张 ¥16,000<br>
-      姊妹卡：28张 ¥14,000<br>
-      全家福卡：15张 ¥13,320<br>
-      靓仔卡：45张 ¥11,250<br>
-      <strong style="color:#D43838;display:block;margin-top:10px;">合计：¥54,570</strong>
-    </div>
-  </div>
-  
-  <div id="rank" class="tab">
-    <div class="data-box">
-      <h3 style="color:var(--blue);margin-bottom:10px;">📊 菜品排行</h3>
-      1. 招牌牛肉面 12,450碗<br>
-      2. 牛肉凉面 8,230碗<br>
-      3. 羊肉串拉面 6,890碗<br>
-      4. 酸汤肥牛面 5,120碗<br>
-      5. 番茄鸡蛋面 4,780碗
-    </div>
-  </div>
-  
-  <div id="tables" class="tab">
-    <div class="data-box">
-      <h3 style="color:var(--blue);margin-bottom:10px;">🪑 桌台状态（12张）</h3>
-      空闲：5张（A01,A02,B01,C01,D01）<br>
-      就餐中：5张（A03,A04,B02,C02,D02）<br>
-      已预订：2张（B03,C03）
-    </div>
-  </div>
-  
-  <div id="purchase" class="tab">
-    <div class="data-box">
-      <h3 style="color:var(--blue);margin-bottom:10px;">📦 采购库存</h3>
-      牛肉：余 15kg ⚠️预警<br>
-      面粉：余 40kg 正常<br>
-      蔬菜：余 8kg ⚠️预警<br>
-      今日采购合计：¥3,280
-    </div>
-  </div>
-  
-  <div id="hr" class="tab">
-    <div class="data-box">
-      <h3 style="color:var(--blue);margin-bottom:10px;">👥 人事排班</h3>
-      员工：12人<br>
-      早班：6人 晚班：6人<br>
-      今日请假：1人 调休：2人
-    </div>
-  </div>
+  <div class="tab" id="sale"><h3>销售统计</h3><p>今日营业中...</p></div>
+  <div class="tab" id="card"><h3>会员卡统计</h3><p>兄弟卡/姊妹卡销量领先</p></div>
+  <div class="tab" id="table"><h3>桌台状态</h3><p>1-8桌：就餐中 | 9-12桌：空闲</p></div>
 </div>
 
 <script>
-let cart = [], total = 0;
-const foods = [
-  // 招牌主食 10
-  {n:"招牌牛肉面",p:32,d:"大片牛腱子"},
-  {n:"牛肉凉面",p:28,d:"夏日经典"},
-  {n:"酸汤肥牛面",p:36,d:"开胃爽口"},
-  {n:"油泼面",p:26,d:"香辣过瘾"},
-  {n:"Biangbiang面",p:28,d:"陕西特色"},
-  {n:"番茄鸡蛋面",p:22,d:"酸甜可口"},
-  {n:"羊肉串拉面",p:38,d:"孜然飘香"},
-  {n:"清汤拉面",p:20,d:"原汁原味"},
-  {n:"红烧牛肉面",p:34,d:"浓汤醇厚"},
-  {n:"干拌拉面",p:24,d:"劲道十足"},
-  // 盖浇饭 8
-  {n:"土豆牛肉盖饭",p:28,d:"家常味道"},
-  {n:"西红柿鸡蛋盖饭",p:22,d:"经典搭配"},
-  {n:"鱼香肉丝盖饭",p:26,d:"下饭神器"},
-  {n:"宫保鸡丁盖饭",p:26,d:"微甜微辣"},
-  {n:"孜然羊肉盖饭",p:32,d:"西北风味"},
-  {n:"红烧茄子盖饭",p:22,d:"素菜之王"},
-  {n:"辣子鸡盖饭",p:28,d:"香辣酥脆"},
-  {n:"牛肉末盖饭",p:28,d:"香浓下饭"},
-  // 特色小吃 8
-  {n:"凉拌牛肚",p:28,d:"爽脆开胃"},
-  {n:"手抓羊肉",p:58,d:"清真经典"},
-  {n:"酿皮",p:18,d:"西北凉皮"},
-  {n:"炸酱面",p:24,d:"老北京味"},
-  {n:"羊肉泡馍",p:36,d:"陕西名吃"},
-  {n:"凉粉",p:16,d:"清凉解暑"},
-  {n:"烤饼",p:12,d:"外酥里软"},
-  {n:"茶叶蛋",p:6,d:"卤香浓郁"},
-  // 风味烤串 8
-  {n:"羊肉串(5串)",p:30,d:"炭火现烤"},
-  {n:"牛肉串(5串)",p:32,d:"鲜嫩多汁"},
-  {n:"烤鸡翅",p:18,d:"蜜汁香"},
-  {n:"烤韭菜",p:12,d:"素菜首选"},
-  {n:"烤茄子",p:16,d:"蒜香浓郁"},
-  {n:"烤金针菇",p:12,d:"香辣"},
-  {n:"烤馒头片",p:10,d:"酥脆"},
-  {n:"烤板筋",p:20,d:"Q弹有嚼劲"},
-  // 饮品 6
-  {n:"冰峰",p:8,d:"西安经典"},
-  {n:"酸梅汤",p:12,d:"解腻神器"},
-  {n:"奶茶",p:15,d:"清真奶香"},
-  {n:"矿泉水",p:5,d:"纯净水"},
-  {n:"可乐",p:8,d:"冰镇"},
-  {n:"鲜榨西瓜汁",p:18,d:"现榨"}
-];
-const box = document.getElementById('mainFood');
-foods.forEach((f,i)=>{
-  box.innerHTML += `<div class="item"><div class="item-info"><h4>${f.n}</h4><p>${f.d}</p></div><div style="display:flex;align-items:center;"><span class="item-price">¥${f.p}</span><div class="add-btn" onclick="addCart(${f.p})">+</div></div></div>`;
+const foods = {
+  "主食":[
+    {n:"招牌牛肉面",p:32,d:"镇店之宝",pop:1},
+    {n:"青海拉面",p:28,d:"正宗西北味",pop:1},
+    {n:"油泼面",p:26,d:"香辣过瘾",pop:1},
+    {n:"Biangbiang面",p:28,d:"陕西特色",pop:1},
+    {n:"番茄鸡蛋面",p:22,d:"酸甜可口",pop:0},
+    {n:"羊肉串拉面",p:38,d:"孜然飘香",pop:1},
+    {n:"清汤拉面",p:20,d:"原汁原味",pop:0},
+    {n:"红烧牛肉面",p:34,d:"浓汤醇厚",pop:1},
+    {n:"干拌拉面",p:24,d:"劲道十足",pop:0}
+  ],
+  "盖饭":[
+    {n:"土豆牛肉盖饭",p:28,d:"家常味道"},
+    {n:"西红柿鸡蛋盖饭",p:22,d:"经典搭配"},
+    {n:"鱼香肉丝盖饭",p:26,d:"下饭神器"},
+    {n:"宫保鸡丁盖饭",p:26,d:"微甜微辣"},
+    {n:"孜然羊肉盖饭",p:32,d:"西北风味"},
+    {n:"红烧茄子盖饭",p:22,d:"素菜之王"},
+    {n:"辣子鸡盖饭",p:28,d:"香辣酥脆"},
+    {n:"牛肉末盖饭",p:28,d:"香浓下饭"}
+  ],
+  "小吃":[
+    {n:"凉拌牛肚",p:28,d:"爽脆开胃"},
+    {n:"手抓羊肉",p:58,d:"清真经典"},
+    {n:"酿皮",p:18,d:"西北凉皮"},
+    {n:"炸酱面",p:24,d:"老北京味"},
+    {n:"羊肉泡馍",p:36,d:"陕西名吃"},
+    {n:"凉粉",p:16,d:"清凉解暑"},
+    {n:"烤饼",p:12,d:"外酥里软"},
+    {n:"茶叶蛋",p:6,d:"卤香浓郁"}
+  ],
+  "烤串":[
+    {n:"羊肉串(5串)",p:30,d:"炭火现烤"},
+    {n:"牛肉串(5串)",p:32,d:"鲜嫩多汁"},
+    {n:"烤鸡翅",p:18,d:"蜜汁香"},
+    {n:"烤韭菜",p:12,d:"素菜首选"},
+    {n:"烤茄子",p:16,d:"蒜香浓郁"},
+    {n:"烤金针菇",p:12,d:"香辣"},
+    {n:"烤馒头片",p:10,d:"酥脆"},
+    {n:"烤板筋",p:20,d:"Q弹有嚼劲"}
+  ],
+  "饮品":[
+    {n:"冰峰",p:8,d:"西安经典"},
+    {n:"酸梅汤",p:12,d:"解腻神器"},
+    {n:"奶茶",p:15,d:"清真奶香"},
+    {n:"矿泉水",p:5,d:"纯净水"},
+    {n:"可乐",p:8,d:"冰镇"},
+    {n:"鲜榨西瓜汁",p:18,d:"现榨"}
+  ]
+};
+let cart=[],total=0,curCat="主食";
+function render(){
+  const box=document.getElementById('menuBox');
+  box.innerHTML="";
+  foods[curCat].forEach(f=>{
+    box.innerHTML+=`<div class="item"><div class="item-info"><h4>${f.n}${f.pop?' 🔥':''}</h4><p>${f.d}</p></div><div style="display:flex;align-items:center;"><span class="item-price">¥${f.p}</span><div class="add-btn" onclick="addCart(${f.p})">+</div></div></div>`;
+  });
+}
+document.querySelectorAll('.cat').forEach(c=>c.onclick=function(){
+  document.querySelectorAll('.cat').forEach(x=>x.classList.remove('active'));
+  this.classList.add('active');
+  curCat=this.dataset.cat;
+  render();
 });
 function addCart(p){cart.push(p);total+=p;document.getElementById('total').innerText=total;}
-function checkout(){if(total==0){alert('购物车为空');return;}alert('下单成功！合计¥'+total+'，共'+cart.length+'件');cart=[];total=0;document.getElementById('total').innerText=0;}
+function checkout(){if(total==0){alert('请先选择菜品');return;}alert('下单成功！合计¥'+total+'，共'+cart.length+'件\n已加入后台统计');cart=[];total=0;document.getElementById('total').innerText=0;}
 function showAdmin(){document.getElementById('loginMask').style.display='flex';}
 function doLogin(){const u=document.getElementById('adminUser').value,p=document.getElementById('adminPwd').value;if(u=='admin'&&p=='888888'){document.getElementById('loginMask').style.display='none';document.getElementById('adminPanel').style.display='block';}else{alert('账号或密码错误');}}
 function logout(){document.getElementById('adminPanel').style.display='none';}
 function showTab(id,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.admin-nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
+render();
 </script>
 </body>
 </html>
-
 
 
